@@ -20,6 +20,7 @@
     "eslint-config-oclif": "^3.1",
     "eslint-config-oclif-typescript": "^0.1",
     "globby": "^10",
+    "jest": "^26.0.1",
     "ts-node": "^8",
     "typescript": "^3.3"
   },
