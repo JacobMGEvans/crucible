@@ -1,13 +1,8 @@
 {
     "private": true,
-    "name": "sync",
+    "name": "mas-yarn-workspace",
     "workspaces": [
-      "packages/*",
-      "example"
+      "packages/*"
     ],
-    "dependencies": {
-      "ansi-colors": "^4.1.1",
-      "conf": "^6.2.0",
-      "enquirer": "^2.3.2"
-    }
+    "dependencies": {}
   }
