@@ -1,6 +1,6 @@
 import {Command, flags} from '@oclif/command'
 import fs = require('fs');
-import {spawn} from 'child_process'
+const axios = require('axios')
 
 export default class Sync extends Command {
   static description = 'describe the command here'
@@ -29,14 +29,27 @@ hello world from ./src/hello.ts!
     console.log(args, 'ARGS PIRATES')
     console.log(flags, 'JOLLY ROGER ')
 
-    flags.fileName.forEach(fileName => {
-      fs.writeFile(fileName, 'abc',  (err: NodeJS.ErrnoException | null): void => {
-        if (err) {
-          console.log(err)
-        }
-        // console.log(data)
+    args[0] = 'https://api.nasa.gov'
+    args[1] = '/planetary/apod?api_key=DEMO_KEY'
+
+    //* The axios calls need to be done in a loop related to the endpoints input.
+    // ? Should Endpoints List and fileNames be the same...?
+    try {
+      const response = await axios.get(`${args[0]}${args[1]}`)
+      console.log(response.data.url)
+      console.log(response.data.explanation)
+
+      flags.fileName.forEach(fileName => {
+        fs.writeFile(fileName, response,  (err: NodeJS.ErrnoException | null): void => {
+          if (err) {
+            console.log(err)
+          }
+          // console.log(data)
+        })
       })
-    })
+    } catch (error) {
+      console.log(error.response.body)
+    }
 
     const name = flags.fileName ?? 'world'
     this.log(`hello ${name} from ./src/commands/hello.ts`)
