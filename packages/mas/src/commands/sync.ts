@@ -36,19 +36,20 @@ hello world from ./src/hello.ts!
     // ? Should Endpoints List and fileNames be the same...?
     try {
       const response = await axios.get(`${args[0]}${args[1]}`)
+      console.log(response)
       console.log(response.data.url)
       console.log(response.data.explanation)
 
-      flags.fileName.forEach(fileName => {
-        fs.writeFile(fileName, response,  (err: NodeJS.ErrnoException | null): void => {
+      flags.fileName.forEach((fileName = `mock-${args[1]}`) => {
+        fs.writeFile(fileName, JSON.stringify(response.data),  (err: NodeJS.ErrnoException | null, data) => {
           if (err) {
             console.log(err)
           }
-          // console.log(data)
+          console.log(data)
         })
       })
     } catch (error) {
-      console.log(error.response.body)
+      console.log(error)
     }
 
     const name = flags.fileName ?? 'world'
