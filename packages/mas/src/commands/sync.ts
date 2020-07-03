@@ -35,16 +35,10 @@ hello world from ./src/hello.ts!
     //* The axios calls need to be done in a loop related to the endpoints input.
     // ? Should Endpoints List and fileNames be the same...?
     try {
-      const response = await axios.get(`${args[0]}${args[1]}`)
-      console.log(response)
-      console.log(response.data.url)
-      console.log(response.data.explanation)
+      const response: JSON = await axios.get(`${args[0]}${args[1]}`)
 
       flags.fileName.forEach((fileName = `mock-${args[1]}`) => {
-        fs.writeFile(fileName, JSON.stringify(response.data),  (err: NodeJS.ErrnoException | null, data) => {
-          if (err) {
-            console.log(err)
-          }
+        fs.writeFile(fileName, JSON.stringify(response), (err, data) => {
           console.log(data)
         })
       })
@@ -52,7 +46,7 @@ hello world from ./src/hello.ts!
       console.log(error)
     }
 
-    const name = flags.fileName ?? 'world'
+    const name = flags.fileName ?? 'mock'
     this.log(`hello ${name} from ./src/commands/hello.ts`)
     if (args.file && flags.force) {
       this.log(`you input --force and --file: ${args.file}`)
