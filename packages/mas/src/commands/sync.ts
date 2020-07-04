@@ -26,20 +26,20 @@ hello world from ./src/hello.ts!
 
   async run() {
     const {args, flags} = this.parse(Sync)
-    console.log(args, 'ARGS PIRATES')
-    console.log(flags, 'JOLLY ROGER ')
 
     args[0] = 'https://api.nasa.gov'
     args[1] = '/planetary/apod?api_key=DEMO_KEY'
 
     //* The axios calls need to be done in a loop related to the endpoints input.
     // ? Should Endpoints List and fileNames be the same...?
+    console.log(args, 'ARGS PIRATES')
+    console.log(flags, 'JOLLY ROGER ')
     try {
       const response: JSON = await axios.get(`${args[0]}${args[1]}`)
 
       flags.fileName.forEach((fileName = `mock-${args[1]}`) => {
-        fs.writeFile(fileName, JSON.stringify(response), (err, data) => {
-          console.log(data)
+        fs.writeFile(fileName, JSON.stringify(response.data), () => {
+          console.log(response)
         })
       })
     } catch (error) {
