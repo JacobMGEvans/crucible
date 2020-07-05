@@ -1,12 +1,12 @@
-import {Command} from '@oclif/command'
-import {cosmiconfig} from 'cosmiconfig'
-const explorer = cosmiconfig('mock-api-sync')
-const debug = require('debug')('mas:base')
-type ConfigType = any
-
-const updateNotifier = require('update-notifier')
 const pkg = require('../package.json')
+import {cosmiconfig} from 'cosmiconfig'
+import {Command} from '@oclif/command'
+import * as updateNotifier from 'update-notifier'
 
+const debug = require('debug')('mas')
+const explorer = cosmiconfig('mock-api-sync')
+
+type ConfigType = any
 export default abstract class Base extends Command {
   static config: null | ConfigType;
 
