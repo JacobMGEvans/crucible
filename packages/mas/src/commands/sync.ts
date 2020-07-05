@@ -1,14 +1,14 @@
-import {Command, flags} from '@oclif/command'
-import fs = require('fs');
-const axios = require('axios')
+/* eslint-disable no-warning-comments */
+import {flags} from '@oclif/command'
+import Base from '../base'
+import * as fs from 'fs'
+import axios, {AxiosResponse} from 'axios'
 
-export default class Sync extends Command {
+export default class Sync extends Base {
   static description = 'describe the command here'
 
   static examples = [
-    `$ mas hello
-hello world from ./src/hello.ts!
-`,
+    '$ mas sync -O ./nasa.json',
   ]
 
   static flags = {
@@ -22,6 +22,7 @@ hello world from ./src/hello.ts!
   }
 
   // ? So the args need to likely be flexible for baseURL of API and many endpoints.
+  // TODO: For that flexibility there will be a config file but also allow for computed names in an array
   static args = [{name: 'api'}, {name: 'endpoint'}]
 
   async run() {
@@ -31,15 +32,17 @@ hello world from ./src/hello.ts!
     args[1] = '/planetary/apod?api_key=DEMO_KEY'
 
     //* The axios calls need to be done in a loop related to the endpoints input.
-    // ? Should Endpoints List and fileNames be the same...?
+    // ? Should Endpoints List and fileNames be the same...? Probably default to fileName === endpoint
     console.log(args, 'ARGS PIRATES')
     console.log(flags, 'JOLLY ROGER ')
     try {
-      const response: JSON = await axios.get(`${args[0]}${args[1]}`)
+      // ? How to handle API keys, maybe a gitignored config or additionally peek .env
+      // TODO: Create interceptor that injects Headers as needed from config
+      const response: AxiosResponse<JSON> = await axios.get(`${args[0]}${args[1]}`)
 
       flags.fileName.forEach((fileName = `mock-${args[1]}`) => {
         fs.writeFile(fileName, JSON.stringify(response.data), () => {
-          console.log(response)
+          console.log('API Call Successful')
         })
       })
     } catch (error) {
