@@ -1,10 +1,8 @@
 import {Command} from '@oclif/command'
-const {cosmiconfig} = require('cosmiconfig')
-const explorer = cosmiconfig('mas')
+import {cosmiconfig} from 'cosmiconfig'
+const explorer = cosmiconfig('mock-api-sync')
 const debug = require('debug')('mas:base')
-type ConfigType = {
-  name?: string;
-};
+type ConfigType = any
 
 const updateNotifier = require('update-notifier')
 const pkg = require('../package.json')

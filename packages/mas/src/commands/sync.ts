@@ -5,10 +5,11 @@ import * as fs from 'fs'
 import axios, {AxiosResponse} from 'axios'
 
 export default class Sync extends Base {
+  // TODO DESCRIPTION
   static description = 'describe the command here'
 
   static examples = [
-    '$ mas sync -O ./nasa.json',
+    '$ mas sync "https://api.nasa.gov" "/planetary/apod?api_key=DEMO_KEY" -O ./nasa.json ',
   ]
 
   static flags = {
@@ -29,13 +30,11 @@ export default class Sync extends Base {
   async run() {
     const {args, flags} = this.parse(Sync)
 
-    // args[0] = 'https://api.nasa.gov'
-    // args[1] = '/planetary/apod?api_key=DEMO_KEY'
-
     //* The axios calls need to be done in a loop related to the endpoints input.
     // ? Should Endpoints List and fileNames be the same...? Probably default to fileName === endpoint
     console.log(args, 'ARGS PIRATES')
     console.log(flags, 'JOLLY ROGER ')
+    console.log(this.config, 'CONFIG FILE')
     try {
       const {api, endpoint} = args
       // ? How to handle API keys, maybe a gitignored config or additionally peek .env
@@ -48,12 +47,10 @@ export default class Sync extends Base {
         })
       })
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
 
-    const name = flags.fileName ?? 'mock'
-    this.log(`hello ${name} from ./src/commands/hello.ts`)
-    if (args.file && flags.force) {
+    if (flags.dirName && flags.force) {
       this.log(`you input --force and --file: ${args.file}`)
     }
   }
