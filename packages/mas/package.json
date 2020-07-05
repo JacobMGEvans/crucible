@@ -11,7 +11,6 @@
     "@oclif/command": "^1.7.0",
     "@oclif/config": "^1.16.0",
     "@oclif/plugin-help": "^3.1.0",
-    "@types/update-notifier": "^4.1.0",
     "axios": "^0.19.2",
     "cosmiconfig": "^6.0.0",
     "debug": "^4.1.1",
@@ -21,6 +20,7 @@
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",
     "@types/node": "^14.0.14",
+    "@types/update-notifier": "^4.1.0",
     "eslint": "^7.4",
     "eslint-config-oclif": "^3.1",
     "eslint-config-oclif-typescript": "^0.2",

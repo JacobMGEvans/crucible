@@ -17,6 +17,7 @@ export default abstract class Base extends Command {
       shouldNotifyInNpmScript: true,
     })
     notifier.notify()
+
     const {config, filepath} = (await explorer.search()) || {}
     debug('parsing config', {config, filepath})
     this.config = config
