@@ -1,6 +1,6 @@
 import {Command} from '@oclif/command'
 const {cosmiconfig} = require('cosmiconfig')
-const explorer = cosmiconfig('mycli')
+const explorer = cosmiconfig('mas')
 const debug = require('debug')('mas:base')
 type ConfigType = {
   name?: string;

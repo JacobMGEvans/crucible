@@ -23,24 +23,26 @@ export default class Sync extends Base {
 
   // ? So the args need to likely be flexible for baseURL of API and many endpoints.
   // TODO: For that flexibility there will be a config file but also allow for computed names in an array
+  // ! CLI inputs will likely be one API first ARGS endpoints all following ARGS
   static args = [{name: 'api'}, {name: 'endpoint'}]
 
   async run() {
     const {args, flags} = this.parse(Sync)
 
-    args[0] = 'https://api.nasa.gov'
-    args[1] = '/planetary/apod?api_key=DEMO_KEY'
+    // args[0] = 'https://api.nasa.gov'
+    // args[1] = '/planetary/apod?api_key=DEMO_KEY'
 
     //* The axios calls need to be done in a loop related to the endpoints input.
     // ? Should Endpoints List and fileNames be the same...? Probably default to fileName === endpoint
     console.log(args, 'ARGS PIRATES')
     console.log(flags, 'JOLLY ROGER ')
     try {
+      const {api, endpoint} = args
       // ? How to handle API keys, maybe a gitignored config or additionally peek .env
       // TODO: Create interceptor that injects Headers as needed from config
-      const response: AxiosResponse<JSON> = await axios.get(`${args[0]}${args[1]}`)
+      const response: AxiosResponse<JSON> = await axios.get(`${api}${endpoint}`)
 
-      flags.fileName.forEach((fileName = `mock-${args[1]}`) => {
+      flags.fileName.forEach((fileName = `mock-${endpoint}`) => {
         fs.writeFile(fileName, JSON.stringify(response.data), () => {
           console.log('API Call Successful')
         })
