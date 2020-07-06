@@ -1,5 +1,5 @@
 const pkg = require('../package.json')
-const debug = require('debug')('mas')
+// const debug = require('debug')('mas')
 import {cosmiconfig} from 'cosmiconfig'
 import TypeScriptLoader from '@endemolshinegroup/cosmiconfig-typescript-loader'
 import {Command} from '@oclif/command'
@@ -23,14 +23,14 @@ const explorer = cosmiconfig(moduleName, {
     '.ts': TypeScriptLoader,
   },
 })
-type ConfigType = {
+export type ConfigType = {
     endpoint: string | string[]; //* Array if multiple is true
     baseUrl: string;
     multipleEndpoints?: boolean; // *  Default false
     mockDirectory?: string;//* Default will be __APIMocks__ (Working Name)
 
 }
-export default abstract class Base extends Command {
+export abstract class Base extends Command {
   static config: ConfigType & IConfig
 
   async init() {
