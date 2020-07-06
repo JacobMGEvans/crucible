@@ -23,7 +23,8 @@ export default class Sync extends Base {
   }
 
   // ? So the args need to likely be flexible for baseURL of API and many endpoints.
-  // TODO: For that flexibility there will be a config file but also allow for computed names in an array
+  // TODO: For that flexibility there will be a config file
+  // ? Is there a way to created computed inputs from CLI
   // ! CLI inputs will likely be one API first ARGS endpoints all following ARGS
   static args = [{name: 'api'}, {name: 'endpoint'}]
 
