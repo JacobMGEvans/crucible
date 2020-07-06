@@ -1,8 +1,10 @@
 /* eslint-disable no-warning-comments */
-import {flags} from '@oclif/command'
-import Base from '../base'
 import * as fs from 'fs'
+import {flags} from '@oclif/command'
+import {Base, ConfigType} from '../base'
+import {IConfig} from '@oclif/config'
 import axios, {AxiosResponse} from 'axios'
+import * as chalk from 'chalk'
 
 export default class Sync extends Base {
   // TODO DESCRIPTION
@@ -29,19 +31,31 @@ export default class Sync extends Base {
   static args = [{name: 'api'}, {name: 'endpoint'}]
 
   async run() {
+    const localConfig  = this.config  as IConfig & ConfigType
+    const dirInConfig = localConfig.mockDirectory
     const {args, flags} = this.parse(Sync)
+
+    //! Directory creation Default __APIMocks__ or User Input
+    //! CLI flags need to take precedent
+    console.log(dirInConfig)
+    if (dirInConfig) {
+      if (fs.existsSync(dirInConfig)) {
+        console.log(chalk.red('Directory Already Exists!'))
+      } else {
+        fs.mkdirSync(`./${dirInConfig}`)
+        console.log(chalk.green('Directory Creation Successful!'))
+      }
+    }
 
     //* The axios calls need to be done in a loop related to the endpoints input.
     // ? Should Endpoints List and fileNames be the same...? Probably default to fileName === endpoint
-    console.log(args, 'ARGS PIRATES')
-    console.log(flags, 'JOLLY ROGER ')
-    console.log(this.config, 'CONFIG FILE')
     try {
       const {api, endpoint} = args
       // ? How to handle API keys, maybe a gitignored config or additionally peek .env
       // TODO: Create interceptor that injects Headers as needed from config
       const response: AxiosResponse<JSON> = await axios.get(`${api}${endpoint}`)
 
+      //! Config fileName and Folder name outputs
       flags.fileName.forEach((fileName = `mock-${endpoint}`) => {
         fs.writeFile(fileName, JSON.stringify(response.data), () => {
           console.log('API Call Successful')
