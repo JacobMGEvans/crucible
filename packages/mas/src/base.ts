@@ -3,6 +3,7 @@ const debug = require('debug')('mas')
 import {cosmiconfig} from 'cosmiconfig'
 import TypeScriptLoader from '@endemolshinegroup/cosmiconfig-typescript-loader'
 import {Command} from '@oclif/command'
+import {IConfig} from '@oclif/config'
 import * as updateNotifier from 'update-notifier'
 
 const moduleName = 'mock-api-sync'
@@ -22,10 +23,15 @@ const explorer = cosmiconfig(moduleName, {
     '.ts': TypeScriptLoader,
   },
 })
+type ConfigType = {
+    endpoint: string | string[]; //* Array if multiple is true
+    baseUrl: string;
+    multipleEndpoints?: boolean; // *  Default false
+    mockDirectory?: string;//* Default will be __APIMocks__ (Working Name)
 
-type ConfigType = any
+}
 export default abstract class Base extends Command {
-  static config: null | ConfigType;
+  static config: ConfigType & IConfig
 
   async init() {
     const notifier = updateNotifier({
@@ -35,8 +41,10 @@ export default abstract class Base extends Command {
     })
     notifier.notify()
 
-    const {config, filepath} = (await explorer.search()) || {}
-    debug('parsing config', {config, filepath})
-    this.config = config
+    const {config, filepath} = await explorer
+    .search()
+    .catch(error => console.error(error, {config, filepath}))
+
+    this.config = config as (ConfigType & IConfig)
   }
 }

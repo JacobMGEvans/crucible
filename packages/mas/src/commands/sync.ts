@@ -1,7 +1,7 @@
 /* eslint-disable no-warning-comments */
+import * as fs from 'fs'
 import {flags} from '@oclif/command'
 import Base from '../base'
-import * as fs from 'fs'
 import axios, {AxiosResponse} from 'axios'
 
 export default class Sync extends Base {
@@ -29,13 +29,15 @@ export default class Sync extends Base {
   static args = [{name: 'api'}, {name: 'endpoint'}]
 
   async run() {
+    const localConfig = this.config
     const {args, flags} = this.parse(Sync)
+
+    //! Directory creation Default __APIMocks__ or User Input
+    if (this.config.mockDirectory)
 
     //* The axios calls need to be done in a loop related to the endpoints input.
     // ? Should Endpoints List and fileNames be the same...? Probably default to fileName === endpoint
-    console.log(args, 'ARGS PIRATES')
-    console.log(flags, 'JOLLY ROGER ')
-    console.log(this.config, 'CONFIG FILE')
+      console.info('parsing config', localConfig)
     try {
       const {api, endpoint} = args
       // ? How to handle API keys, maybe a gitignored config or additionally peek .env
