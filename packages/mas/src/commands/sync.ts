@@ -42,6 +42,7 @@ export default class Sync extends Base {
       // TODO: Create interceptor that injects Headers as needed from config
       const response: AxiosResponse<JSON> = await axios.get(`${api}${endpoint}`)
 
+      //! Config fileName and Folder name outputs
       flags.fileName.forEach((fileName = `mock-${endpoint}`) => {
         fs.writeFile(fileName, JSON.stringify(response.data), () => {
           console.log('API Call Successful')
