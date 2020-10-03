@@ -1,8 +1,8 @@
 {
-    "private": true,
-    "name": "mas-yarn-workspace",
-    "workspaces": [
-      "packages/*"
-    ],
-    "dependencies": {}
-  }
+  "private": true,
+  "name": "mas-yarn-workspace",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {}
+}
