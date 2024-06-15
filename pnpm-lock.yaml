@@ -9,48 +9,47 @@ importers:
   .:
     dependencies:
       '@readme/openapi-parser':
-        specifier: ^2.5.1
-        version: 2.5.1(openapi-types@12.1.3)
+        specifier: ^2.6.0
+        version: 2.6.0(openapi-types@12.1.3)
       msw:
-        specifier: ^2.2.14
-        version: 2.2.14(typescript@5.4.5)
+        specifier: ^2.3.1
+        version: 2.3.1(typescript@5.4.5)
       next:
         specifier: 14.2.3
         version: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
-        specifier: ^18
+        specifier: ^18.3.1
         version: 18.3.1
       react-dom:
-        specifier: ^18
+        specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@types/node':
-        specifier: ^20
-        version: 20.12.8
+        specifier: ^20.14.2
+        version: 20.14.2
       '@types/react':
-        specifier: ^18
-        version: 18.3.1
+        specifier: ^18.3.3
+        version: 18.3.3
       '@types/react-dom':
-        specifier: ^18
+        specifier: ^18.3.0
         version: 18.3.0
+      openapi-types:
+        specifier: ^12.1.3
+        version: 12.1.3
       postcss:
-        specifier: ^8
+        specifier: ^8.4.38
         version: 8.4.38
       tailwindcss:
-        specifier: ^3.4.1
-        version: 3.4.3
+        specifier: ^3.4.4
+        version: 3.4.4
       typescript:
-        specifier: ^5
+        specifier: ^5.4.5
         version: 5.4.5
 
 packages:
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
-    engines: {node: '>=10'}
-
-  '@apidevtools/openapi-schemas@2.1.0':
-    resolution: {integrity: sha512-Zc1AlqrJlX3SlpupFGpiLi2EbteyP7fXmUOGup6/DnkRgjP9bgMM/ag+n91rsv0U1Gpz0H3VILA/o3bW7Ua6BQ==}
     engines: {node: '>=10'}
 
   '@apidevtools/swagger-methods@3.0.2':
@@ -127,8 +126,8 @@ packages:
     resolution: {integrity: sha512-0ZcCVQxifZmhwNBoQIrystCb+2sWBY2Zw8lpfJBPCHGCA/HWqehITeCRVIv4VMy8MPlaHo2w2pTHFV2pFfqKPw==}
     engines: {node: '>=18'}
 
-  '@mswjs/interceptors@0.26.15':
-    resolution: {integrity: sha512-HM47Lu1YFmnYHKMBynFfjCp0U/yRskHj/8QEJW0CBEPOlw8Gkmjfll+S9b8M7V5CNDw2/ciRxjjnWeaCiblSIQ==}
+  '@mswjs/interceptors@0.29.1':
+    resolution: {integrity: sha512-3rDakgJZ77+RiQUuSK69t1F0m8BQKA8Vh5DCS5V0DWvNY67zob2JhhQrhCO0AKLGINTRSFd1tBaHcJTkhefoSw==}
     engines: {node: '>=18'}
 
   '@next/env@14.2.3':
@@ -222,11 +221,15 @@ packages:
   '@readme/json-schema-ref-parser@1.2.0':
     resolution: {integrity: sha512-Bt3QVovFSua4QmHa65EHUmh2xS0XJ3rgTEUPH998f4OW4VVJke3BuS16f+kM0ZLOGdvIrzrPRqwihuv5BAjtrA==}
 
-  '@readme/openapi-parser@2.5.1':
-    resolution: {integrity: sha512-p9ndWhwjtP+DEiOOF6jeNMpdmYIPM4nl+JEIdnQNdq7b68esI024x7HiYACZpaYaSvISDSyKc7aiRJx4K4IDhg==}
+  '@readme/openapi-parser@2.6.0':
+    resolution: {integrity: sha512-pyFJXezWj9WI1O+gdp95CoxfY+i+Uq3kKk4zXIFuRAZi9YnHpHOpjumWWr67wkmRTw19Hskh9spyY0Iyikf3fA==}
     engines: {node: '>=18'}
     peerDependencies:
       openapi-types: '>=7'
+
+  '@readme/openapi-schemas@3.1.0':
+    resolution: {integrity: sha512-9FC/6ho8uFa8fV50+FPy/ngWN53jaUu4GRXlAjcxIRrzhltJnpKkBG2Tp0IDraFJeWrOpk84RJ9EMEEYzaI1Bw==}
+    engines: {node: '>=18'}
 
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
@@ -243,8 +246,8 @@ packages:
   '@types/mute-stream@0.0.4':
     resolution: {integrity: sha512-CPM9nzrCPPJHQNA9keH9CVkVI+WR5kMa+7XEs5jcGQ0VoAGnLv242w8lIVgwAEfmE4oufJRaTc9PNLQl0ioAow==}
 
-  '@types/node@20.12.8':
-    resolution: {integrity: sha512-NU0rJLJnshZWdE/097cdCBbyW1h4hEg0xpovcoAQYHl8dnEyp/NAOiE45pvc+Bd1Dt+2r94v2eGFpQJ4R7g+2w==}
+  '@types/node@20.14.2':
+    resolution: {integrity: sha512-xyu6WAMVwv6AKFLB+e/7ySZVr/0zLCzOa7rSpq6jNwpqOrUbcACDWC+53d4n2QHOnDou0fbIsg8wZu/sxrnI4Q==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -252,8 +255,8 @@ packages:
   '@types/react-dom@18.3.0':
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
 
-  '@types/react@18.3.1':
-    resolution: {integrity: sha512-V0kuGBX3+prX+DQ/7r2qsv1NsdfnCLnTgnRJ1pYnxykBhGMz+qj+box5lq7XsO5mtZsBqpjwwTu/7wszPfMBcw==}
+  '@types/react@18.3.3':
+    resolution: {integrity: sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==}
 
   '@types/statuses@2.0.5':
     resolution: {integrity: sha512-jmIUGWrAiwu3dZpxntxieC+1n/5c3mjrImkmOSQ2NC5uP6cYO4aAZDdSmRcI5C1oiTmqlZGHC+/NmJrKogbP5A==}
@@ -586,8 +589,8 @@ packages:
     resolution: {integrity: sha512-jYofLM5Dam9279rdkWzqHozUo4ybjdZmCsDHePy5V/PbBcVMiSZR97gmAy45aqi8CK1lG2ECd356FU86avfwUQ==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  msw@2.2.14:
-    resolution: {integrity: sha512-64i8rNCa1xzDK8ZYsTrVMli05D687jty8+Th+PU5VTbJ2/4P7fkQFVyDQ6ZFT5FrNR8z2BHhbY47fKNvfHrumA==}
+  msw@2.3.1:
+    resolution: {integrity: sha512-ocgvBCLn/5l3jpl1lssIb3cniuACJLoOfZu01e3n5dbJrpA5PeeWn28jCLgQDNt6d7QT8tF2fYRzm9JoEHtiig==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -839,8 +842,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  tailwindcss@3.4.3:
-    resolution: {integrity: sha512-U7sxQk/n397Bmx4JHbJx/iSOOv5G+II3f1kpLpY2QeUv5DcPdcTsYLlusZfq1NthHS1c1cZoyFmmkex1rzke0A==}
+  tailwindcss@3.4.4:
+    resolution: {integrity: sha512-ZoyXOdJjISB7/BcLTR6SEsLgKtDStYyYZVLsUtWChO4Ps20CBad7lfJKVDiejocV4ME1hLmyY0WJE3hSDcmQ2A==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -921,8 +924,6 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@apidevtools/openapi-schemas@2.1.0': {}
-
   '@apidevtools/swagger-methods@3.0.2': {}
 
   '@babel/code-frame@7.24.2':
@@ -963,7 +964,7 @@ snapshots:
       '@inquirer/figures': 1.0.1
       '@inquirer/type': 1.3.1
       '@types/mute-stream': 0.0.4
-      '@types/node': 20.12.8
+      '@types/node': 20.14.2
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
@@ -1008,7 +1009,7 @@ snapshots:
 
   '@mswjs/cookies@1.1.0': {}
 
-  '@mswjs/interceptors@0.26.15':
+  '@mswjs/interceptors@0.29.1':
     dependencies:
       '@open-draft/deferred-promise': 2.2.0
       '@open-draft/logger': 0.3.0
@@ -1088,17 +1089,19 @@ snapshots:
       call-me-maybe: 1.0.2
       js-yaml: 4.1.0
 
-  '@readme/openapi-parser@2.5.1(openapi-types@12.1.3)':
+  '@readme/openapi-parser@2.6.0(openapi-types@12.1.3)':
     dependencies:
-      '@apidevtools/openapi-schemas': 2.1.0
       '@apidevtools/swagger-methods': 3.0.2
       '@jsdevtools/ono': 7.1.3
       '@readme/better-ajv-errors': 1.6.0(ajv@8.13.0)
       '@readme/json-schema-ref-parser': 1.2.0
+      '@readme/openapi-schemas': 3.1.0
       ajv: 8.13.0
       ajv-draft-04: 1.0.0(ajv@8.13.0)
       call-me-maybe: 1.0.2
       openapi-types: 12.1.3
+
+  '@readme/openapi-schemas@3.1.0': {}
 
   '@swc/counter@0.1.3': {}
 
@@ -1113,9 +1116,9 @@ snapshots:
 
   '@types/mute-stream@0.0.4':
     dependencies:
-      '@types/node': 20.12.8
+      '@types/node': 20.14.2
 
-  '@types/node@20.12.8':
+  '@types/node@20.14.2':
     dependencies:
       undici-types: 5.26.5
 
@@ -1123,9 +1126,9 @@ snapshots:
 
   '@types/react-dom@18.3.0':
     dependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.3
 
-  '@types/react@18.3.1':
+  '@types/react@18.3.3':
     dependencies:
       '@types/prop-types': 15.7.12
       csstype: 3.1.3
@@ -1407,13 +1410,13 @@ snapshots:
 
   minipass@7.0.4: {}
 
-  msw@2.2.14(typescript@5.4.5):
+  msw@2.3.1(typescript@5.4.5):
     dependencies:
       '@bundled-es-modules/cookie': 2.0.0
       '@bundled-es-modules/statuses': 1.0.1
       '@inquirer/confirm': 3.1.6
       '@mswjs/cookies': 1.1.0
-      '@mswjs/interceptors': 0.26.15
+      '@mswjs/interceptors': 0.29.1
       '@open-draft/until': 2.1.0
       '@types/cookie': 0.6.0
       '@types/statuses': 2.0.5
@@ -1641,7 +1644,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  tailwindcss@3.4.3:
+  tailwindcss@3.4.4:
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
